@@ -1,0 +1,3 @@
+[auth.third_party.clerk]
+enabled = true
+domain = "https://central-lioness-68.clerk.accounts.dev"
