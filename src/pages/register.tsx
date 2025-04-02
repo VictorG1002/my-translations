@@ -1,9 +1,9 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 
-export default function Login() {
+export default function Register() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <SignIn routing="hash" appearance={{
+      <SignUp routing="hash" appearance={{
         layout: {
           logoLinkUrl: "/",
           logoImageUrl: "/logo.svg",
@@ -15,11 +15,7 @@ export default function Login() {
         variables: {
           colorPrimary: "#3ECF8E",
         },
-      }}
-      fallbackRedirectUrl="/dashboard"
-      signUpUrl="/register"
-      afterSignOutUrl={"/"}
-      />
+      }} signInUrl="/login" />
     </div>
-  );
+  )
 }

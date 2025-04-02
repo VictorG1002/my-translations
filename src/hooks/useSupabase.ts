@@ -10,13 +10,15 @@ const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
 
 export function useSupabase() {   
   const { getToken } = useAuth();
+  
   const [supabase, setSupabase] = useState<SupabaseClient | null>(null);
+  const [jwtToken, setJwtToken] = useState<string | null>(null);
 
   useEffect(() => {
     const initializeSupabase = async () => {
       try {
         const token = await getToken();
-        
+        setJwtToken(token);
         if (!supabaseUrl || !supabaseKey) {
           throw new Error('Supabase URL ou Key não configurados');
         }
@@ -45,5 +47,5 @@ export function useSupabase() {
     initializeSupabase();
   }, [getToken]);
 
-  return { supabase };
+  return { supabase, jwtToken };
 }
