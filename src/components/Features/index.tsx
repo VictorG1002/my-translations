@@ -9,10 +9,10 @@ export default function Features({ features }: { features: Feature[] }) {
   return (
     <div id='features' className='mx-auto mt-48 max-w-7xl px-6 lg:px-8'>
       <div className='mx-auto max-w-2xl text-center'>
-        <p className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
+        <p className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
           The <span className='text-yellow-500'>Best</span> Features
         </p>
-        <p className='mt-6 text-lg leading-8 text-gray-600 dark:text-white'>
+        <p className='mt-6 text-lg leading-8 text-gray-600'>
           Don't work harder.
           <br /> Work smarter.
         </p>

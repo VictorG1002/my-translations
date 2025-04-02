@@ -1,18 +1,14 @@
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import Link from 'next/link';
 import { IoIosMenu } from 'react-icons/io';
-import { UserProfile, useUser } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs';
 import { appNavigationItems } from './contentSections';
-
-const NavLogo = () => <Image width={32} height={32} src={'/logo.svg'} alt='Logo' />;
 
 export default function Header() {
   const { user } = useUser();
-
-  // const { data: user, isLoading: isUserLoading } = useAuth();
 
   return (
     <header className={cn('absolute inset-x-0 top-0 z-50')}>
@@ -20,9 +16,9 @@ export default function Header() {
         <div className='flex items-center lg:flex-1'>
           <Link
             href={'/'}
-            className='flex items-center -m-1.5 p-1.5 text-gray-900 duration-300 ease-in-out hover:text-emerald-700'
+            className='flex items-center -m-1.5 p-1.5 text-gray-900 duration-300 ease-in-out hover:text-green-300'
           >
-            <NavLogo />
+            <Image width={32} height={32} src={'/logo.svg'} alt='Logo' />
 
             <span className='ml-2 text-sm font-semibold leading-6'>My Translations</span>
           </Link>
@@ -41,17 +37,15 @@ export default function Header() {
         <div className='hidden lg:flex lg:gap-x-12'>{renderNavigationItems(appNavigationItems)}</div>
 
         <div className='hidden lg:flex lg:flex-1 gap-3 justify-end items-center'>
-          <ul className='flex justify-center items-center gap-2 sm:gap-4'></ul>
-
           {!user ? (
             <Link href={'/login'} className='text-sm font-semibold leading-6 ml-3'>
-              <div className='flex items-center duration-300 ease-in-out text-gray-900 hover:text-emerald-700'>
+              <div className='flex items-center duration-300 ease-in-out text-gray-900 hover:text-green-300'>
                 Log in
               </div>
             </Link>
           ) : (
             <div className='ml-3'>
-              <UserProfile />
+              <UserButton />
             </div>
           )}
         </div>
@@ -106,7 +100,7 @@ function renderNavigationItems(
   const menuStyles = cn({
     '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50':
       !!setMobileMenuOpen,
-    'text-sm font-semibold leading-6 text-gray-900 duration-300 ease-in-out hover:text-emerald-700':
+    'text-sm font-semibold leading-6 text-gray-900 duration-300 ease-in-out hover:text-green-300':
       !setMobileMenuOpen,
   });
 
